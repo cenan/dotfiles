@@ -1,7 +1,31 @@
 [user]
 	name = cenan ozen
 	email = cenan.ozen@gmail.com
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	df = diff
+	dc = diff --cached
+	lg = log -p
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	ls = ls-files
+	ign = ls-files -o -i --exclude-standard
 [giggle]
-	main-window-maximized = true
-	main-window-geometry = 1024x555+0+24
+	main-window-maximized = false
+	main-window-geometry = 935x846+445+115
 	main-window-view = HistoryView
+	history-view-vpane-position = 416
+	file-view-vpane-position = 512
+
