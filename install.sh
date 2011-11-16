@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-ln -fs ./tmux.conf $HOME/.tmux.conf
-ln -fs ./conkytmux $HOME/.conkytmux
-ln -fs ./guile $HOME/.guile
-ln -fs ./gitconfig $HOME/.gitconfig
-ln -fs ./sqliterc $HOME/.sqliterc
+SCRIPT_DIR=$( dirname $(readlink -f ${BASH_SOURCE[0]}) )
+
+ln -fs $SCRIPT_DIR/tmux.conf $HOME/.tmux.conf
+ln -fs $SCRIPT_DIR/conkytmux $HOME/.conkytmux
+ln -fs $SCRIPT_DIR/guile $HOME/.guile
+ln -fs $SCRIPT_DIR/gitconfig $HOME/.gitconfig
+ln -fs $SCRIPT_DIR/sqliterc $HOME/.sqliterc
 
