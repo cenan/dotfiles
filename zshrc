@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="muse"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -30,8 +30,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-alias tmux="tmux -2"
 alias sv="sudo vim"
+alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
+
+function sve() {
+	source ~/.virtualenvs/$1/bin/activate
+}
+
 PATH=$PATH:~/google_appengine
 CDPATH=.:~/projects
 
