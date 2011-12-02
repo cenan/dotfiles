@@ -31,6 +31,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 alias tmux="tmux -2"
+alias sv="sudo vim"
 PATH=$PATH:~/google_appengine
 CDPATH=.:~/projects
 
