@@ -30,7 +30,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-alias tmux="tmux -2"
+alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
+
+function sve() {
+	source ~/.virtualenvs/$1/bin/activate
+}
+
 PATH=$PATH:~/google_appengine
 CDPATH=.:~/projects
 
