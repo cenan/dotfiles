@@ -32,6 +32,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias sv="sudo vim"
 alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
+alias rawsm="kill -1 `pidof awesome`"
 
 function sve() {
 	source ~/.virtualenvs/$1/bin/activate
