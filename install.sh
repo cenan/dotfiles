@@ -11,5 +11,6 @@ ln -fs $SCRIPT_DIR/sqliterc $HOME/.sqliterc
 ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
 rm -f $HOME/.js
 ln -fs $SCRIPT_DIR/dotjs $HOME/.js
+rm -f $HOME/.config/awesome
 ln -fs $SCRIPT_DIR/awesome $HOME/.config/awesome
 
