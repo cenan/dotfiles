@@ -14,3 +14,5 @@ sudo apt-get install moc
 
 sudo apt-get install awesome
 
+su -c "echo 'Dir::Ignore-Files-Silently:: \"(.save)$\";' > /etc/apt/apt.conf.d/99ignoresave"
+
