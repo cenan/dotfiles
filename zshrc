@@ -38,6 +38,6 @@ function sve() {
 	source ~/.virtualenvs/$1/bin/activate
 }
 
-PATH=$PATH:~/google_appengine
+PATH=$PATH:~/bin:~/google_appengine
 CDPATH=.:~/projects
 
