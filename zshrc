@@ -39,5 +39,5 @@ function sve() {
 }
 
 PATH=$PATH:~/bin:~/google_appengine
-CDPATH=.:~/projects
+CDPATH=.:~:~/projects
 
