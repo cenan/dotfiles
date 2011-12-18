@@ -1,25 +1,35 @@
 #!/bin/bash
 
-sudo apt-get install curl
-sudo-apt-get install openssh-server
-sudo apt-get install moc
-sudo apt-get install conky
+function install_package() {
+	sudo apt-get install $1
+}
 
-sudo apt-get install git-core
-sudo apt-get install tig
-sudo apt-get install git-gui
+install_package curl
+install_package openssh-server
+install_package moc
+install_package conky
 
-sudo apt-get install mercurial
-sudo apt-get install tortoisehg
+install_package git-core
+install_package tig git-gui giggle
 
-sudo apt-get install exuberant-ctags
-sudo apt-get install vim-gnome
+install_package mercurial
+install_package tortoisehg
 
-sudo apt-get install tmux
-sudo apt-get install awesome
+install_package vim-gnome
+install_package exuberant-ctags
 
-sudo apt-get install sqlite3
-sudo apt-get install python-mysqldb
+# TODO: add backports if we are on an older distro for tmux 1.5
+install_package tmux
+
+install_package awesome
+
+install_package sqlite3
+install_package python-mysqldb
 
 su -c "echo 'Dir::Ignore-Files-Silently:: \"(.save)$\";' > /etc/apt/apt.conf.d/99ignoresave"
+
+git clone git@github.com:cenanozen/dotvim.git /home/cenan/.vim
+git clone git@github.com:cenanozen/dotfiles.git /home/cenan/dotfiles
+
+# TODO: install monaco font
 
