@@ -8,7 +8,10 @@ ln -fs $SCRIPT_DIR/guile $HOME/.guile
 ln -fs $SCRIPT_DIR/gitconfig $HOME/.gitconfig
 ln -fs $SCRIPT_DIR/hgrc $HOME/.hgrc
 ln -fs $SCRIPT_DIR/sqliterc $HOME/.sqliterc
+
 ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
+ln -fs $SCRIPT_DIR/bash_aliases $HOME/.bash_aliases
+
 rm -f $HOME/.js
 ln -fs $SCRIPT_DIR/dotjs $HOME/.js
 rm -f $HOME/.config/awesome
