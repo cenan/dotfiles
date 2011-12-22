@@ -1,6 +1,7 @@
 [extensions]
 progress=
 purge=
+color=
 
 [ui]
 username=cenan ozen <cenan.ozen@tacirnet.com.tr>
