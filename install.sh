@@ -17,3 +17,7 @@ ln -fs $SCRIPT_DIR/dotjs $HOME/.js
 rm -f $HOME/.config/awesome
 ln -fs $SCRIPT_DIR/awesome $HOME/.config/awesome
 
+ln -fs $SCRIPT_DIR/emacs $HOME/.emacs
+
+ln -fs $SCRIPT_DIR/Xdefaults $HOME/.Xdefaults
+xrdb -merge ~/.Xdefaults
