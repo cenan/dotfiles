@@ -21,3 +21,5 @@
 
 (show-paren-mode 1)
 
+(setq explicit-shell-file-name "/bin/bash")
+
