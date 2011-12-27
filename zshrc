@@ -30,6 +30,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+export TERM="xterm-256color"
+
 alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
 alias rawsm="kill -1 `pidof awesome`"
 
