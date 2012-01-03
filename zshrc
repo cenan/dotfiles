@@ -44,6 +44,8 @@ function sve() {
 	source ~/.virtualenvs/$1/bin/activate
 }
 
-PATH=$PATH:~/bin:~/projects/go/bin:~/google_appengine
+PATH=$PATH:~/bin:/opt/node/bin:~/projects/go/bin:~/google_appengine
 CDPATH=.:~:~/projects
+
+export GOROOT=~/projects/go
 
