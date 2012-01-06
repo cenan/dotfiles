@@ -17,3 +17,11 @@ alias h='history|grep '
 #search processes
 alias p='ps aux |grep '
 
+alias g='git'
+alias gst='git status'
+alias gl='git pull'
+alias gup='git fetch && git rebase'
+alias gp='git push'
+alias ga='git add'
+alias gm='git merge'
+
