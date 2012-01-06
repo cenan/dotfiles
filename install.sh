@@ -10,7 +10,8 @@ ln -fs $SCRIPT_DIR/hgrc $HOME/.hgrc
 ln -fs $SCRIPT_DIR/sqliterc $HOME/.sqliterc
 
 ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
-ln -fs $SCRIPT_DIR/bash_aliases $HOME/.bash_aliases
+ln -fs $SCRIPT_DIR/bashrc $HOME/.bashrc
+ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
 
 rm -f $HOME/.js
 ln -fs $SCRIPT_DIR/dotjs $HOME/.js

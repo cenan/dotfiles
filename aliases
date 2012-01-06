@@ -9,6 +9,7 @@ alias apt-purge='sudo apt-get --purge  remove'
 alias apt-remove='sudo apt-get remove'
 alias apt-up="sudo apt-get update && sudo apt-get upgrade"
 alias apt-policy="LANG=C apt-cache policy"
+alias apt-bp='sudo apt-get -t squeeze-backports install'
 
 #find file
 alias f='find . |grep '
@@ -24,4 +25,16 @@ alias gup='git fetch && git rebase'
 alias gp='git push'
 alias ga='git add'
 alias gm='git merge'
+
+alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
+alias rawsm="kill -1 `pidof awesome`"
+
+alias v="vim"
+alias sv="sudo vim"
+alias e="emacs -nw"
+alias se="sudo emacs -nw"
+
+function sve() {
+	source ~/.virtualenvs/$1/bin/activate
+}
 
