@@ -1,0 +1,4 @@
+Host *
+	ForwardAgent yes
+
+# vim: set filetype=sshconfig :

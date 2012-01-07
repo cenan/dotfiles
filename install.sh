@@ -20,5 +20,7 @@ ln -fs $SCRIPT_DIR/awesome $HOME/.config/awesome
 
 ln -fs $SCRIPT_DIR/emacs $HOME/.emacs
 
+ln -fs $SCRIPT_DIR/sshconfig $HOME/.ssh/config
+
 ln -fs $SCRIPT_DIR/Xdefaults $HOME/.Xdefaults
 xrdb -merge ~/.Xdefaults
