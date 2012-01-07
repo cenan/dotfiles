@@ -33,6 +33,7 @@ alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
+alias ta="tmux -2 attach"
 
 function sve() {
 	source ~/.virtualenvs/$1/bin/activate
