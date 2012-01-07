@@ -1,4 +1,9 @@
 Host *
 	ForwardAgent yes
 
+Host github
+	HostName github.com
+	User git
+	IdentityFile /home/cenan/.ssh/nds
+
 # vim: set filetype=sshconfig :
