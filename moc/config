@@ -1,0 +1,11 @@
+ReadTags          = yes
+Repeat            = yes
+FormatString      = "%a:%t"
+Theme             = gokyuzu
+ShowFormat        = no
+ShowTime          = no
+PlaylistNumbering = no
+FollowPlayedFile  = yes
+SetXtermTitle     = yes
+SetScreenTitle    = yes
+PlaylistFullPaths = no

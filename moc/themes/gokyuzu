@@ -1,0 +1,48 @@
+#
+# Theme: gokyuzu
+# Author: Cenan Ozen <me@cenanozen.com>
+#
+
+background           = white   default normal
+frame                = white   white   normal
+window_title         = blue    default bold
+
+directory            = white   black   normal
+selected_directory   = blue    black   bold
+
+playlist             = cyan    default 
+selected_playlist    = blue    default bold
+file                 = cyan    default 
+selected_file        = blue    white   
+marked_file          = white   blue    
+marked_selected_file = cyan    white   
+
+info                 = black   cyan    
+status               = blue    white   
+title                = cyan    black   
+state                = red     black   
+
+current_time         = white   default 
+time_left            = white   default 
+total_time           = white   default 
+time_total_frames    = white   cyan    
+
+sound_parameters     = cyan    default bold
+legend               = black   default 
+disabled             = white   default normal
+enabled              = white   cyan    bold,underline
+
+empty_mixer_bar      = cyan    black   
+filled_mixer_bar     = white   white   
+
+empty_time_bar       = cyan    blue    
+filled_time_bar      = blue    cyan    
+
+entry                = yellow  default 
+entry_title          = yellow  default bold
+
+error                = yellow  default bold
+message              = white   default bold
+plist_time           = white   default normal
+
+#  vim: set ts=4 sw=4 tw=0 filetype=conf :

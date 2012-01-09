@@ -29,9 +29,15 @@ ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
 
 check "emacs" ln -fs $SCRIPT_DIR/emacs $HOME/.emacs
 
-if check "awesome" ;then
+if check "awesome"; then
 	rm -f $HOME/.config/awesome
 	ln -fs $SCRIPT_DIR/awesome $HOME/.config/awesome
+fi
+
+if check "mocp"; then
+	mkdir -p $HOME/.moc/themes
+	ln -fs $SCRIPT_DIR/moc/config $HOME/.moc/config
+	ln -fs $SCRIPT_DIR/moc/themes/gokyuzu $HOME/.moc/themes/gokyuzu
 fi
 
 #TODO check for dotjs
