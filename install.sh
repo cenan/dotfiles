@@ -27,7 +27,7 @@ check "zsh"     && ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
 check "bash"    && ln -fs $SCRIPT_DIR/bashrc $HOME/.bashrc
 ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
 
-check "emacs"   && ln -fs $SCRIPT_DIR/emacs $HOME/.emacs
+check "emacs"   && ln -fs $SCRIPT_DIR/emacs/config.el $HOME/.emacs
 
 if check "awesome"; then
 	rm -f $HOME/.config/awesome

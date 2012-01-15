@@ -1,12 +1,13 @@
 
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "~/dotfiles/emacs/")
 
 ;; Color theme
 (require 'color-theme)
 (setq color-theme-is-global t)
 (color-theme-initialize)
-(color-theme-charcoal-black)
-
+;(color-theme-charcoal-black)
+(load "color-theme-tomorrow")
+(color-theme-tomorrow-night-eighties)
 
 ; disable menu and toolbar
 (menu-bar-mode 0)
