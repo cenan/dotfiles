@@ -30,6 +30,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+source $HOME/.aliases
+
 export TERM="xterm-256color"
 
 PATH=$PATH:~/bin:/opt/node/bin:~/projects/go/bin:~/google_appengine
