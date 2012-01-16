@@ -93,3 +93,5 @@ fi
 #eval $(ssh-agent -s)
 ssh-add ~/.ssh/nds
 
+
+[[ -s "/home/cenan/.rvm/scripts/rvm" ]] && source "/home/cenan/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
