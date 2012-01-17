@@ -40,6 +40,9 @@ if check "mocp"; then
 	ln -fs $SCRIPT_DIR/moc/themes/gokyuzu $HOME/.moc/themes/gokyuzu
 fi
 
+ln -fs $SCRIPT_DIR/Xdefaults $HOME/.Xdefaults
+xrdb -merge ~/.Xdefaults
+
 #TODO check for dotjs
 #rm -f $HOME/.js
 #ln -fs $SCRIPT_DIR/dotjs $HOME/.js
@@ -47,6 +50,3 @@ fi
 #FIXME overwrites old config
 #ln -fs $SCRIPT_DIR/sshconfig $HOME/.ssh/config
 
-#FIXME
-#ln -fs $SCRIPT_DIR/Xdefaults $HOME/.Xdefaults
-#xrdb -merge ~/.Xdefaults
