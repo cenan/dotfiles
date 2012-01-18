@@ -40,8 +40,10 @@ if check "mocp"; then
 	ln -fs $SCRIPT_DIR/moc/themes/gokyuzu $HOME/.moc/themes/gokyuzu
 fi
 
-ln -fs $SCRIPT_DIR/Xdefaults $HOME/.Xdefaults
-xrdb -merge ~/.Xdefaults
+if check "xrdb"; then
+	ln -fs $SCRIPT_DIR/Xdefaults $HOME/.Xdefaults
+	xrdb -merge ~/.Xdefaults
+fi
 
 #TODO check for dotjs
 #rm -f $HOME/.js
