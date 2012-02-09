@@ -17,7 +17,6 @@ function check() {
 }
 
 check "tmux"    && ln -fs $SCRIPT_DIR/tmux.conf $HOME/.tmux.conf
-check "conky"   && ln -fs $SCRIPT_DIR/conkytmux $HOME/.conkytmux
 check "guile"   && ln -fs $SCRIPT_DIR/guile $HOME/.guile
 check "sqlite3" && ln -fs $SCRIPT_DIR/sqliterc $HOME/.sqliterc
 check "git"     && ln -fs $SCRIPT_DIR/gitconfig $HOME/.gitconfig
@@ -28,6 +27,11 @@ check "bash"    && ln -fs $SCRIPT_DIR/bashrc $HOME/.bashrc
 ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
 
 check "emacs"   && ln -fs $SCRIPT_DIR/emacs/config.el $HOME/.emacs
+
+if check "conky"; then
+	ln -fs $SCRIPT_DIR/conkytmux $HOME/.conkytmux
+	ln -fs $SCRIPT_DIR/conkyrc $HOME/.conkyrc
+fi
 
 if check "awesome"; then
 	rm -f $HOME/.config/awesome
