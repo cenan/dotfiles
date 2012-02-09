@@ -32,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.aliases
 
-export TERM="xterm-256color"
+export TERM="screen-256color"
 
 PATH=$PATH:~/bin:/opt/node/bin:~/projects/go/bin:~/google_appengine
 CDPATH=.:~:~/projects

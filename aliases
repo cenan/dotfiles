@@ -36,6 +36,6 @@ alias se="sudo emacs -nw"
 alias ta="tmux -2 attach"
 
 function sve() {
-	source ~/.virtualenvs/$1/bin/activate
+	source ~/env/$1/bin/activate
 }
 
