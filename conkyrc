@@ -1,4 +1,4 @@
-background no
+background yes
 use_xft yes
 xftfont Consolas:size=10
 xftalpha 0.9
