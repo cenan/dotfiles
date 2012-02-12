@@ -24,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git mercurial django debian lol pip)
+plugins=(git django debian pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -34,7 +34,7 @@ source $HOME/.aliases
 
 export TERM="screen-256color"
 
-PATH=$PATH:~/bin:/opt/node/bin:~/projects/go/bin:~/google_appengine
+PATH=$PATH:~/local/bin:~/bin:/opt/node/bin:~/projects/go/bin:~/google_appengine
 CDPATH=.:~:~/projects
 
 export GOROOT=~/projects/go
