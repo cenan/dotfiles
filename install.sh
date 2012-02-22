@@ -26,7 +26,10 @@ check "zsh"     && ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
 check "bash"    && ln -fs $SCRIPT_DIR/bashrc $HOME/.bashrc
 
 ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
-ln -fs $SCRIPT_DIR/gtkrc-2.0 $HOME/.gtkrc-2.0
+if [ -n $DESKTOP_SESSION]; then
+	echo "Disabling sizing grip..."
+	ln -fs $SCRIPT_DIR/gtkrc-2.0 $HOME/.gtkrc-2.0
+fi
 
 check "emacs"   && ln -fs $SCRIPT_DIR/emacs/config.el $HOME/.emacs
 
