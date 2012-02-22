@@ -26,8 +26,8 @@ check "zsh"     && ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
 check "bash"    && ln -fs $SCRIPT_DIR/bashrc $HOME/.bashrc
 
 ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
-if [ -n $DESKTOP_SESSION]; then
-	echo "Disabling sizing grip..."
+if [ -n $DESKTOP_SESSION ]; then
+	echo "${txtgrn}linking config for gtkrc${txtrst}"
 	ln -fs $SCRIPT_DIR/gtkrc-2.0 $HOME/.gtkrc-2.0
 fi
 
