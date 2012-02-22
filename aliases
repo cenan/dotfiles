@@ -29,6 +29,7 @@ alias gm='git merge'
 alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
 alias rawsm="kill -1 `pidof awesome`"
 
+alias t="tmux"
 alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"
