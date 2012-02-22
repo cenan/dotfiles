@@ -32,7 +32,7 @@ check "emacs"   && ln -fs $SCRIPT_DIR/emacs/config.el $HOME/.emacs
 
 if check "conky"; then
 	ln -fs $SCRIPT_DIR/conkytmux $HOME/.conkytmux
-	ln -fs $SCRIPT_DIR/conkyrc $HOME/.conkyrc
+	ln -fs $SCRIPT_DIR/conky.$HOST.rc $HOME/.conkyrc
 fi
 
 if check "awesome"; then
