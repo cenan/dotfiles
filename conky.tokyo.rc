@@ -31,8 +31,7 @@ color1 333333
 
 TEXT
 ${color0}${alignr}INFO
-${color1}$sysname $kernel on $machine
-Uptime $alignr $uptime
+${color1}Uptime $alignr $uptime
 Load $alignr $loadavg
 $processes processes $alignr ($running_processes running)
 ${stippled_hr 2 1}
@@ -47,9 +46,9 @@ ${fs_bar /}
 ${stippled_hr 2 1}
 ${color0}${alignr}NETWORK
 ${color1}eth0 $alignr ${addr eth0}
-Inbound $alignr ${downspeed eth0} kb/s
+Inbound $alignr ${downspeed eth0}
 ${downspeedgraph eth0}
-Outbound $alignr ${upspeed eth0} kb/s
+Outbound $alignr ${upspeed eth0}
 ${upspeedgraph eth0}
 ${stippled_hr 2 1}
 ${color0}${alignr}MEMORY
