@@ -47,7 +47,9 @@ alias gm='git merge'
 # }}}
 
 alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
-alias rawsm="kill -1 `pidof awesome`"
+if [[ $OSTYPE != darwin* ]]; then
+	alias rawsm="kill -1 `pidof awesome`"
+fi
 
 alias t="tmux"
 alias v="vim"
