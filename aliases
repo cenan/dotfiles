@@ -2,6 +2,9 @@ alias ..='cd ..'
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
 
+# {{{1 package management
+
+# {{{2 aptitude
 alias apt-install='sudo apt-get install'
 alias apt-search='apt-cache search'
 alias apt-show='apt-cache show'
@@ -11,6 +14,20 @@ alias apt-up="sudo apt-get update && sudo apt-get upgrade"
 alias apt-policy="LANG=C apt-cache policy"
 alias apt-bp='sudo apt-get -t squeeze-backports install'
 
+# {{{2 pacman
+alias pacupg='sudo pacman -Syu'        # Synchronize with repositories before upgrading packages that are out of date on the local system.
+alias pacin='sudo pacman -S'           # Install specific package(s) from the repositories
+alias pacins='sudo pacman -U'          # Install specific package not from the repositories but from a file 
+alias pacre='sudo pacman -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
+alias pacrem='sudo pacman -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
+alias pacrep='pacman -Si'              # Display information about a given package in the repositories
+alias pacreps='pacman -Ss'             # Search for package(s) in the repositories
+alias pacloc='pacman -Qi'              # Display information about a given package in the local database
+alias paclocs='pacman -Qs'             # Search for package(s) in the local database
+# }}}
+
+# }}}
+
 #find file
 alias f='find . |grep '
 #search history
@@ -18,6 +35,7 @@ alias h='history|grep '
 #search processes
 alias p='ps aux |grep '
 
+# {{{ git
 alias g='git'
 alias gst='git status'
 alias gl='git pull'
@@ -25,10 +43,16 @@ alias gup='git fetch && git rebase'
 alias gp='git push'
 alias ga='git add'
 alias gm='git merge'
+alias gdf='git diff'
+
+# }}}
 
 alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
-alias rawsm="kill -1 `pidof awesome`"
+if [[ $OSTYPE != darwin* ]]; then
+	alias rawsm="kill -1 `pidof awesome`"
+fi
 
+alias t="tmux"
 alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"

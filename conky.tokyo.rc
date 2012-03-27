@@ -1,0 +1,58 @@
+background yes
+use_xft yes
+xftfont Consolas:size=10
+xftalpha 0.9
+update_interval 4.0
+total_run_times 0
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 5
+maximum_width 240
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color black
+default_shade_color red
+default_outline_color green
+alignment bottom_right
+gap_x 12
+gap_y 36 
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+
+color0 3333dd
+color1 333333
+
+TEXT
+${color0}${alignr}INFO
+${color1}Uptime $alignr $uptime
+Load $alignr $loadavg
+$processes processes $alignr ($running_processes running)
+${stippled_hr 2 1}
+${color0}${alignr}CPU
+${color1}CPU $alignr ${cpu cpu0}%
+${cpubar cpu0}
+CPU Temp: ${platform coretemp.0 temp 1}${iconv_start UTF-8 ISO_8859-1}°${iconv_stop}C GPU Temp: ${nvidia temp}${iconv_start UTF-8 ISO_8859-1}°${iconv_stop}C
+${stippled_hr 2 1}
+${color0}${alignr}FS
+${color1}/ $alignc ${fs_used /} of ${fs_size /} $alignr ${fs_free_perc /}%
+${fs_bar /}
+${stippled_hr 2 1}
+${color0}${alignr}NETWORK
+${color1}eth0 $alignr ${addr eth0}
+Inbound $alignr ${downspeed eth0}
+${downspeedgraph eth0}
+Outbound $alignr ${upspeed eth0}
+${upspeedgraph eth0}
+${stippled_hr 2 1}
+${color0}${alignr}MEMORY
+${color1}mem $alignc $mem / $memmax $alignr $memperc%
+$membar
+swap $alignc $swap / $swapmax $alignr $swapperc%
+${swapbar}

@@ -26,13 +26,16 @@ check "zsh"     && ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
 check "bash"    && ln -fs $SCRIPT_DIR/bashrc $HOME/.bashrc
 
 ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
-ln -fs $SCRIPT_DIR/gtkrc-2.0 $HOME/.gtkrc-2.0
+if [ -n "$DESKTOP_SESSION" ]; then
+	echo "${txtgrn}linking config for gtkrc${txtrst}"
+	ln -fs $SCRIPT_DIR/gtkrc-2.0 $HOME/.gtkrc-2.0
+fi
 
 check "emacs"   && ln -fs $SCRIPT_DIR/emacs/config.el $HOME/.emacs
 
 if check "conky"; then
 	ln -fs $SCRIPT_DIR/conkytmux $HOME/.conkytmux
-	ln -fs $SCRIPT_DIR/conkyrc $HOME/.conkyrc
+	ln -fs $SCRIPT_DIR/conky.$(hostname).rc $HOME/.conkyrc
 fi
 
 if check "awesome"; then

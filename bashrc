@@ -90,8 +90,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+export EDITOR=`which vim`
+export TERM=xterm
+
 #eval $(ssh-agent -s)
 ssh-add ~/.ssh/nds
 
+PATH=$PATH:~/local/bin
 
 [[ -s "/home/cenan/.rvm/scripts/rvm" ]] && source "/home/cenan/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
