@@ -1,6 +1,10 @@
 Host *
 	ForwardAgent yes
 
+Host cenanozen.com
+	HostName cenanozen.com
+	Port 3454
+
 Host github
 	HostName github.com
 	User git

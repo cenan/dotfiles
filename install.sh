@@ -54,10 +54,9 @@ if check "xrdb"; then
 	xrdb -merge ~/.Xdefaults
 fi
 
+ln -fs $SCRIPT_DIR/sshconfig $HOME/.ssh/config
+
 #TODO check for dotjs
 #rm -f $HOME/.js
 #ln -fs $SCRIPT_DIR/dotjs $HOME/.js
-
-#FIXME overwrites old config
-#ln -fs $SCRIPT_DIR/sshconfig $HOME/.ssh/config
 
