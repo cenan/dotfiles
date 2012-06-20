@@ -63,3 +63,8 @@ function sve() {
 	source ~/env/$1/bin/activate
 }
 
+function take() {
+	mkdir -p $1
+	cd $1
+}
+
