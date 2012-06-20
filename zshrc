@@ -41,3 +41,5 @@ export GOROOT=~/projects/go
 
 [[ -s "/home/cenan/.rvm/scripts/rvm" ]] && source "/home/cenan/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
