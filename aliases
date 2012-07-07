@@ -54,6 +54,7 @@ if [[ $OSTYPE != darwin* ]]; then
 fi
 
 alias t="tmux"
+alias tls="tmux ls"
 alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"
