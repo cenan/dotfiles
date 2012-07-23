@@ -2,6 +2,7 @@ alias ..='cd ..'
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
 alias pserve='python -mSimpleHTTPServer'
+alias gts='grunt test'
 
 # {{{1 package management
 
@@ -53,13 +54,13 @@ if [[ $OSTYPE != darwin* ]]; then
 	alias rawsm="kill -1 `pidof awesome`"
 fi
 
-alias t="tmux"
+alias t="tmux -2 -u"
 alias tls="tmux ls"
 alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
-alias ta="tmux -2 attach"
+alias ta="tmux -2 -u attach"
 
 function sve() {
 	source ~/env/$1/bin/activate
