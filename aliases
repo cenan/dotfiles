@@ -55,12 +55,13 @@ if [[ $OSTYPE != darwin* ]]; then
 fi
 
 alias t="tmux -2 -u"
+alias ta="tmux -2 -u attach"
+alias tat="tmux -2 -u attach -t"
 alias tls="tmux ls"
 alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
-alias ta="tmux -2 -u attach"
 
 function sve() {
 	source ~/env/$1/bin/activate
