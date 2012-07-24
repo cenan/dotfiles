@@ -38,6 +38,7 @@ alias h='history|grep '
 alias p='ps aux |grep '
 
 # {{{ git
+
 alias g='git'
 alias gst='git status'
 alias gl='git pull'
@@ -49,15 +50,19 @@ alias gdf='git diff'
 
 # }}}
 
-alias tmux="tmux -2" # force tmux to assume terminal supports 256 colors
 if [[ $OSTYPE != darwin* ]]; then
 	alias rawsm="kill -1 `pidof awesome`"
 fi
+
+# {{{ tmux
 
 alias t="tmux -2 -u"
 alias ta="tmux -2 -u attach"
 alias tat="tmux -2 -u attach -t"
 alias tls="tmux ls"
+
+# }}}
+
 alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"
