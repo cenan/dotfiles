@@ -4,6 +4,7 @@ Host *
 Host cenanozen.com
 	HostName cenanozen.com
 	Port 3454
+	IdentityFile /home/cenan/.ssh/nds
 
 Host github
 	HostName github.com
