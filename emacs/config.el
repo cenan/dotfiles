@@ -20,6 +20,9 @@
 ; enable mouse
 (xterm-mouse-mode)
 
+; silence on startup
+(setq inhibit-startup-screen 1)
+
 (show-paren-mode 1)
 
 (setq explicit-shell-file-name "/bin/bash")
