@@ -3,6 +3,7 @@ alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
 alias pserve='python -mSimpleHTTPServer'
 alias gts='grunt test'
+alias df='df --human-readable -T'
 
 # {{{1 package management
 
