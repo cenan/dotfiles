@@ -69,9 +69,7 @@ alias sv="sudo vim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
 
-function sve() {
-	source ~/env/$1/bin/activate
-}
+alias sve=". env/bin/activate"
 
 function take() {
 	mkdir -p $1
