@@ -56,7 +56,3 @@ fi
 
 ln -fs $SCRIPT_DIR/sshconfig $HOME/.ssh/config
 
-#TODO check for dotjs
-#rm -f $HOME/.js
-#ln -fs $SCRIPT_DIR/dotjs $HOME/.js
-
