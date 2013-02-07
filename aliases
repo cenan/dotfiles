@@ -1,7 +1,3 @@
-if [ "$SSH_CONNECTION" = "" ]; then
-	alias ls='ls color=no'
-fi
-
 alias ..='cd ..'
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
