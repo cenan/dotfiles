@@ -2,6 +2,10 @@ alias ..='cd ..'
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
 alias pserve='python -mSimpleHTTPServer'
+# static web server using node module http-server,
+# faster than python command above
+# install with: npm install http-server -g
+alias nserve='http-server -p 8000'
 alias gts='grunt test'
 alias df='df --human-readable -T'
 
@@ -79,3 +83,4 @@ function take() {
 	cd $1
 }
 
+# vim: set filetype=sh :
