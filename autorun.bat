@@ -5,10 +5,10 @@
 @doskey ll=dir /w $*
 @doskey la=dir /x /a $*
 
-@doskey cp=copy
-@doskey mv=move
+@doskey cp=copy $*
+@doskey mv=move $*
 @doskey rm=del /p $*
-@doskey cat=type
+@doskey cat=type $*
 
 @doskey v=vim
 
