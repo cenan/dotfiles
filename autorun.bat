@@ -14,8 +14,8 @@
 
 @doskey pserve=python -m SimpleHTTPServer
 
-@doskey g=git
+@doskey g=git $*
 @doskey gst=git status
-@doskey gdf=git diff
+@doskey gdf=git diff $*
 @doskey gp=git push
 @doskey gl=git pull
