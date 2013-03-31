@@ -2,6 +2,8 @@ if [ -f ~/dotfiles/aliases ]; then
 	source ~/dotfiles/aliases
 fi
 
+CDPATH=.:~:~/projects
+
 autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
