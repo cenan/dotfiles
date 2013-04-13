@@ -1,3 +1,5 @@
+# {{{ cd
+
 alias ..='cd ..'
 alias cd..='cd ..'
 alias cd...='cd ../..'
@@ -29,13 +31,26 @@ cd () {
   fi
 }
 
+alias d='dirs -v | head -10'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias -- -='cd -'
+
+# }}}
+
 alias md='mkdir -p'
 alias rd=rmdir
-alias d='dirs -v | head -10'
 
 # mkdir & cd to it
 function mcd() { 
   mkdir -p "$1" && cd "$1"; 
+}
+
+# TODO remove
+function take() {
+	echo "*** use mcd instead of take !!"
+	mkdir -p $1
+	cd $1
 }
 
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
@@ -45,8 +60,6 @@ alias gts='grunt test'
 alias df='df --human-readable -T'
 
 # from zsh
-alias ...='cd ../..'
-alias -- -='cd -'
 alias _='sudo'
 alias history='fc -l 1'
 alias lsa='ls -lah'
@@ -125,8 +138,5 @@ alias se="sudo emacs -nw"
 
 alias sve=". env/bin/activate"
 
-function take() {
-	mkdir -p $1
-	cd $1
-}
 
+# vim: set filetype=conf :
