@@ -207,3 +207,6 @@ bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 
+unsetopt AUTO_NAME_DIRS
+source $HOME/liquidprompt/liquidprompt
+
