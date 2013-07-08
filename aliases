@@ -69,6 +69,7 @@ alias ll='ls -l'
 # ########
 
 alias getcomposer='curl -s https://getcomposer.org/installer | php'
+alias art='php artisan $*'
 
 # {{{1 package management
 
