@@ -27,3 +27,4 @@
 
 (setq explicit-shell-file-name "/bin/bash")
 
+(global-hl-line-mode t)

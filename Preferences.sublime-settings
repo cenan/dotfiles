@@ -1,0 +1,11 @@
+{
+	"color_scheme": "Packages/User/Monokai Soda.tmTheme",
+	"font_size": 9,
+	"ignored_packages":
+	[
+	],
+	"soda_folder_icons": true,
+	"theme": "Soda Dark.sublime-theme",
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true
+}

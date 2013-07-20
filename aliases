@@ -1,4 +1,58 @@
+# {{{ cd
+
 alias ..='cd ..'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd/='cd /'
+
+alias 1='cd -'
+alias 2='cd +2'
+alias 3='cd +3'
+alias 4='cd +4'
+alias 5='cd +5'
+alias 6='cd +6'
+alias 7='cd +7'
+alias 8='cd +8'
+alias 9='cd +9'
+
+cd () {
+  if   [[ "x$*" == "x..." ]]; then
+    cd ../..
+  elif [[ "x$*" == "x...." ]]; then
+    cd ../../..
+  elif [[ "x$*" == "x....." ]]; then
+    cd ../../..
+  elif [[ "x$*" == "x......" ]]; then
+    cd ../../../..
+  else
+    builtin cd "$@"
+  fi
+}
+
+alias d='dirs -v | head -10'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias -- -='cd -'
+
+# }}}
+
+alias md='mkdir -p'
+alias rd=rmdir
+
+# mkdir & cd to it
+function mcd() { 
+  mkdir -p "$1" && cd "$1"; 
+}
+
+# TODO remove
+function take() {
+	echo "*** use mcd instead of take !!"
+	mkdir -p $1
+	cd $1
+}
+
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
 alias pserve='python -mSimpleHTTPServer'
@@ -9,7 +63,17 @@ alias nserve='http-server -p 8000'
 alias gts='grunt test'
 alias df='df --human-readable -T'
 
+# from zsh
+alias _='sudo'
+alias history='fc -l 1'
+alias lsa='ls -lah'
+alias l='ls -la'
+alias ll='ls -l'
+
+# ########
+
 alias getcomposer='curl -s https://getcomposer.org/installer | php'
+alias art='php artisan $*'
 
 # {{{1 package management
 
@@ -78,9 +142,11 @@ alias se="sudo emacs -nw"
 
 alias sve=". env/bin/activate"
 
-function take() {
-	mkdir -p $1
-	cd $1
-}
+# {{{ typos
 
-# vim: set filetype=sh :
+alias hotp="htop"
+alias sl=ls
+
+# }}}
+
+# vim: set filetype=conf :
