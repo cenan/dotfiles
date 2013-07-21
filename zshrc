@@ -2,6 +2,11 @@ if [ -f ~/dotfiles/aliases ]; then
 	source ~/dotfiles/aliases
 fi
 
+# Load RVM into a shell session *as a function*
+[[ -s "/home/cenan/.rvm/scripts/rvm" ]] && source "/home/cenan/.rvm/scripts/rvm"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 CDPATH=.:~:~/projects
 
 autoload colors; colors;
