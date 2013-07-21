@@ -46,13 +46,6 @@ function mcd() {
   mkdir -p "$1" && cd "$1"; 
 }
 
-# TODO remove
-function take() {
-	echo "*** use mcd instead of take !!"
-	mkdir -p $1
-	cd $1
-}
-
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
 alias pserve='python -mSimpleHTTPServer'
@@ -62,6 +55,7 @@ alias pserve='python -mSimpleHTTPServer'
 alias nserve='http-server -p 8000'
 alias gts='grunt test'
 alias df='df --human-readable -T'
+alias chx='chmod +x $*'
 
 # from zsh
 alias _='sudo'
