@@ -204,3 +204,5 @@ bindkey "\e[3~" delete-char
 
 unsetopt AUTO_NAME_DIRS
 
+source $HOME/dotfiles/x_profile
+

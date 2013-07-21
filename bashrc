@@ -96,3 +96,5 @@ export TERM=xterm
 #eval $(ssh-agent -s)
 #ssh-add ~/.ssh/nds
 
+source $HOME/dotfiles/x_profile
+
