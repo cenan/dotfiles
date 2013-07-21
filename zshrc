@@ -1,8 +1,3 @@
-if [ -f ~/dotfiles/aliases ]; then
-	source ~/dotfiles/aliases
-fi
-
-CDPATH=.:~:~/projects
 
 autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
@@ -208,5 +203,4 @@ bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 
 unsetopt AUTO_NAME_DIRS
-source $HOME/liquidprompt/liquidprompt
 
