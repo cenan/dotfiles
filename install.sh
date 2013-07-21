@@ -24,6 +24,7 @@ check "hg"      && ln -fs $SCRIPT_DIR/hgrc $HOME/.hgrc
 
 check "zsh"     && ln -fs $SCRIPT_DIR/zshrc $HOME/.zshrc
 check "bash"    && ln -fs $SCRIPT_DIR/bashrc $HOME/.bashrc
+ln -fs $SCRIPT_DIR/profile $HOME/.profile
 
 ln -fs $SCRIPT_DIR/aliases $HOME/.aliases
 if [ -n "$DESKTOP_SESSION" ]; then

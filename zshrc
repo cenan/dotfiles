@@ -1,13 +1,3 @@
-if [ -f ~/dotfiles/aliases ]; then
-	source ~/dotfiles/aliases
-fi
-
-# Load RVM into a shell session *as a function*
-[[ -s "/home/cenan/.rvm/scripts/rvm" ]] && source "/home/cenan/.rvm/scripts/rvm"
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-CDPATH=.:~:~/projects
 
 autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
@@ -213,5 +203,4 @@ bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 
 unsetopt AUTO_NAME_DIRS
-source $HOME/liquidprompt/liquidprompt
 
