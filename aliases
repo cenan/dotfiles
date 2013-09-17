@@ -5,7 +5,7 @@ alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 alias cd.....='cd ../../../..'
-alias cd/='cd /'
+#alias cd/='cd /'
 
 alias 1='cd -'
 alias 2='cd +2'
@@ -113,6 +113,14 @@ alias ga='git add'
 alias gm='git merge'
 alias gdf='git diff'
 alias gpa='git push all'
+
+# }}}
+
+# {{{ svn
+
+alias sst='svn status'
+alias sup='svn up'
+alias sdf='svn diff'
 
 # }}}
 
