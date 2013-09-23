@@ -37,6 +37,7 @@ alias ....='cd ../../..'
 alias -- -='cd -'
 
 # }}}
+# {{{ misc
 
 alias md='mkdir -p'
 alias rd=rmdir
@@ -48,14 +49,17 @@ function mcd() {
 
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
-alias pserve='python -mSimpleHTTPServer'
-# static web server using node module http-server,
-# faster than python command above
-# install with: npm install http-server -g
-alias nserve='http-server -p 8000'
-alias gts='grunt test'
 alias df='df --human-readable -T'
 alias chx='chmod +x $*'
+
+if [[ $OSTYPE != darwin* ]]; then
+	alias rawsm="kill -1 `pidof awesome`"
+fi
+
+alias v="vim"
+alias sv="sudo vim"
+alias e="emacs -nw"
+alias se="sudo emacs -nw"
 
 # from zsh
 alias _='sudo'
@@ -64,11 +68,16 @@ alias lsa='ls -lah'
 alias l='ls -la'
 alias ll='ls -l'
 
-# ########
+# }}}
+# {{{ search
+#find file
+alias f='find . |grep '
+#search history
+alias h='history|grep '
+#search processes
+alias p='ps aux |grep '
 
-alias getcomposer='curl -s https://getcomposer.org/installer | php'
-alias art='php artisan $*'
-
+# }}}
 # {{{1 package management
 
 # {{{2 aptitude
@@ -94,15 +103,9 @@ alias paclocs='pacman -Qs'             # Search for package(s) in the local data
 # }}}
 
 # }}}
+# {{{1 source control
 
-#find file
-alias f='find . |grep '
-#search history
-alias h='history|grep '
-#search processes
-alias p='ps aux |grep '
-
-# {{{ git
+# {{{2 git
 
 alias g='git'
 alias gst='git status'
@@ -114,9 +117,7 @@ alias gm='git merge'
 alias gdf='git diff'
 alias gpa='git push all'
 
-# }}}
-
-# {{{ svn
+# {{{2 svn
 
 alias sst='svn status'
 alias sup='svn up'
@@ -124,30 +125,53 @@ alias sdf='svn diff'
 
 # }}}
 
-if [[ $OSTYPE != darwin* ]]; then
-	alias rawsm="kill -1 `pidof awesome`"
-fi
+# }}}
+# {{{1 terminal multiplexers
 
-# {{{ tmux
+# {{{2 tmux
 
 alias t="tmux -2 -u"
 alias ta="tmux -2 -u attach"
 alias tat="tmux -2 -u attach -t"
 alias tls="tmux ls"
 
+# {{{2 screen
+
+alias s="screen $*"
+alias sa="screen -r"
+
 # }}}
 
-alias v="vim"
-alias sv="sudo vim"
-alias e="emacs -nw"
-alias se="sudo emacs -nw"
-
-alias sve=". env/bin/activate"
-
+# }}}
 # {{{ typos
 
 alias hotp="htop"
 alias sl=ls
+
+# }}}
+# {{{1 development
+# {{{2 python dev
+
+alias sve=". env/bin/activate"
+
+# }}}
+# {{{2 node dev
+
+alias gts='grunt test'
+
+# }}}
+# {{{2 php dev
+
+alias getcomposer='curl -s https://getcomposer.org/installer | php'
+alias art='php artisan $*'
+
+# }}}
+
+alias pserve='python -mSimpleHTTPServer'
+# static web server using node module http-server,
+# faster than python command above
+# install with: npm install http-server -g
+alias nserve='http-server -p 8000'
 
 # }}}
 
