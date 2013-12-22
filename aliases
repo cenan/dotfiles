@@ -150,6 +150,11 @@ alias sl=ls
 
 # }}}
 # {{{1 development
+# {{{2 ruby dev
+
+alias be='bundle exec $*'
+
+# }}}
 # {{{2 python dev
 
 alias sve=". env/bin/activate"
