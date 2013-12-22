@@ -29,3 +29,5 @@
 	history-view-vpane-position = 416
 	file-view-vpane-position = 512
 
+[push]
+	default = simple
