@@ -116,6 +116,9 @@ alias ga='git add'
 alias gm='git merge'
 alias gdf='git diff'
 alias gpa='git push all'
+function gcp() {
+	git commit -am"$*" && git push origin master
+}
 
 # {{{2 svn
 
@@ -156,6 +159,7 @@ alias sl=ls
 # {{{2 ruby dev
 
 alias be='bundle exec $*'
+alias mdep='mina deploy'
 
 # }}}
 # {{{2 python dev
