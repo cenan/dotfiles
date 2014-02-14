@@ -186,5 +186,10 @@ alias pserve='python -mSimpleHTTPServer'
 alias nserve='http-server -p 8000'
 
 # }}}
+# {{{ linux specific commands
+if [[ $OSTYPE != darwin* ]]; then
+	alias openports='netstat -tnlp | grep -v 127.0.0 | grep -v ::1:'
+fi
+# }}}
 
 # vim: set filetype=conf :
