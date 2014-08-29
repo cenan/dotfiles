@@ -60,6 +60,7 @@ alias v="vim"
 alias sv="sudo vim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
+alias vssh="v ~/.ssh/config"
 
 # from zsh
 alias _='sudo'
@@ -191,5 +192,10 @@ if [[ $OSTYPE != darwin* ]]; then
 	alias openports='netstat -tnlp | grep -v 127.0.0 | grep -v ::1:'
 fi
 # }}}
+
+# strings –a /proc/<pid_of_the_process>/environ
+
+alias ntldep='git commit -amupdate && gp && mina deploy'
+alias ctags="`brew --prefix`/bin/ctags"
 
 # vim: set filetype=conf :
