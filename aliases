@@ -49,7 +49,11 @@ function mcd() {
 
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
-alias df='df --human-readable -T'
+if [[ $OSTYPE != darwin* ]]; then
+  alias df='df --human-readable -T'
+else
+  alias df='df -H'
+fi
 alias chx='chmod +x $*'
 
 if [[ $OSTYPE != darwin* ]]; then
@@ -154,6 +158,8 @@ alias sa="screen -r"
 
 alias hotp="htop"
 alias sl=ls
+alias mian=mina
+alias tks=tls
 
 # }}}
 # {{{1 development
@@ -161,6 +167,7 @@ alias sl=ls
 
 alias be='bundle exec $*'
 alias mdep='mina deploy'
+alias mina='noglob mina'
 
 # }}}
 # {{{2 python dev
@@ -180,11 +187,15 @@ alias art='php artisan $*'
 
 # }}}
 
+alias gmas='git checkout master'
+alias gdev='git checkout develop'
+
 alias pserve='python -mSimpleHTTPServer'
 # static web server using node module http-server,
 # faster than python command above
 # install with: npm install http-server -g
 alias nserve='http-server -p 8000'
+alias gtags='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
 
 # }}}
 # {{{ linux specific commands
@@ -193,9 +204,13 @@ if [[ $OSTYPE != darwin* ]]; then
 fi
 # }}}
 
+alias r6='cd ~/projects/dbdesigner/r6'
+
 # strings –a /proc/<pid_of_the_process>/environ
 
 alias ntldep='git commit -amupdate && gp && mina deploy'
 alias ctags="`brew --prefix`/bin/ctags"
+
+alias ff="find . -type f | xargs fgrep $1 -s -B1 -A1"
 
 # vim: set filetype=conf :
