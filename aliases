@@ -113,6 +113,7 @@ alias paclocs='pacman -Qs'             # Search for package(s) in the local data
 # {{{2 git
 
 alias g='git'
+alias gc='git checkout'
 alias gst='git status'
 alias gl='git pull'
 alias gup='git fetch && git rebase'
@@ -158,6 +159,7 @@ alias sa="screen -r"
 
 alias hotp="htop"
 alias sl=ls
+alias ks=ls
 alias mian=mina
 alias tks=tls
 
