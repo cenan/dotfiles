@@ -14,7 +14,7 @@ fi
 
 CDPATH=.:~:~/projects
 
-source $HOME/liquidprompt/liquidprompt
+source $HOME/dotfiles/liquidprompt/liquidprompt
 export EDITOR=nvim
 
 # vim: set filetype= :
