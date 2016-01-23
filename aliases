@@ -60,8 +60,8 @@ if [[ $OSTYPE != darwin* ]]; then
 	alias rawsm="kill -1 `pidof awesome`"
 fi
 
-alias v="vim"
-alias sv="sudo vim"
+alias v="nvim"
+alias sv="sudo nvim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
 alias vssh="v ~/.ssh/config"
