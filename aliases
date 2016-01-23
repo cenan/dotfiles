@@ -190,6 +190,9 @@ alias getcomposer='curl -s https://getcomposer.org/installer | php'
 alias art='php artisan $*'
 
 # }}}
+# {{{2 go dev
+alias gg='cd $GOPATH/src/github.com'
+# }}}
 
 alias gmas='git checkout master'
 alias gdev='git checkout develop'
