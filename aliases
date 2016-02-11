@@ -188,6 +188,7 @@ alias gts='grunt test'
 
 alias getcomposer='curl -s https://getcomposer.org/installer | php'
 alias art='php artisan $*'
+alias rstdb="php artisan migrate:refresh --seed && php artisan db:populate"
 
 # }}}
 # {{{2 go dev
@@ -210,8 +211,13 @@ if [[ $OSTYPE != darwin* ]]; then
 	alias openports='netstat -tnlp | grep -v 127.0.0 | grep -v ::1:'
 fi
 # }}}
-
+# {{{ project specific shortcuts
 alias r6='cd ~/projects/dbdesigner/r6'
+alias pco='cd ~/projects/dbdesigner/cosql'
+alias ptr='cd ~/projects/dbdesigner/translations'
+alias pf='cd ~/projects/freelance'
+alias pss='cd ~/projects/freelance/startsub/startsub-v2'
+# }}}
 
 # strings –a /proc/<pid_of_the_process>/environ
 
