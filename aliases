@@ -43,8 +43,8 @@ alias md='mkdir -p'
 alias rd=rmdir
 
 # mkdir & cd to it
-function mcd() { 
-  mkdir -p "$1" && cd "$1"; 
+function mcd() {
+  mkdir -p "$1" && cd "$1";
 }
 
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
@@ -65,6 +65,7 @@ alias sv="sudo nvim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
 alias vssh="v ~/.ssh/config"
+alias vp="vi ~/Dropbox/passwd/passwords"
 
 # from zsh
 alias _='sudo'
@@ -98,7 +99,7 @@ alias apt-bp='sudo apt-get -t squeeze-backports install'
 # {{{2 pacman
 alias pacupg='sudo pacman -Syu'        # Synchronize with repositories before upgrading packages that are out of date on the local system.
 alias pacin='sudo pacman -S'           # Install specific package(s) from the repositories
-alias pacins='sudo pacman -U'          # Install specific package not from the repositories but from a file 
+alias pacins='sudo pacman -U'          # Install specific package not from the repositories but from a file
 alias pacre='sudo pacman -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
 alias pacrem='sudo pacman -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
 alias pacrep='pacman -Si'              # Display information about a given package in the repositories
@@ -227,5 +228,7 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 alias ff="find . -type f | xargs fgrep $1 -s -B1 -A1"
+
+alias mc="MC_SKIN=modarin256 mc"
 
 # vim: set filetype=conf :
