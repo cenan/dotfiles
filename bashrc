@@ -104,4 +104,5 @@ _tat() {
 }
 
 complete -F _tat tat
+complete -F _tat t
 
