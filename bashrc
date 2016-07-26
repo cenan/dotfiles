@@ -98,3 +98,10 @@ export TERM=xterm
 
 source $HOME/dotfiles/x_profile
 
+_tat() {
+	local cur=${COMP_WORDS[COMP_CWORD]}
+	COMPREPLY=( $(compgen -W "$(tmux ls | cut -f1 -d':' | tr '\n' ' ')" -- $cur) )
+}
+
+complete -F _tat tat
+
