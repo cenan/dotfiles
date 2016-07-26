@@ -1,0 +1,12 @@
+max_uploads = 4
+download_rate = 0
+upload_rate = 50
+directory = /home/cenan/Downloads
+session = /home/cenan/rtsession
+dht = auto
+
+dht_port = 63425
+peer_exchange = yes
+
+port_random = yes
+port_range = 9010-9049
