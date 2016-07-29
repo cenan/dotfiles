@@ -61,6 +61,7 @@ alias sv="sudo vim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
 alias vssh="v ~/.ssh/config"
+alias v.="v ."
 
 # from zsh
 alias _='sudo'
@@ -142,12 +143,7 @@ alias ta="tmux -2 -u attach"
 alias tat="tmux -2 -u attach -t"
 alias tls="tmux ls"
 
-# {{{2 screen
 
-alias s="screen $*"
-alias sa="screen -r"
-
-# }}}
 
 # }}}
 # {{{ typos
@@ -178,6 +174,9 @@ alias gts='grunt test'
 alias getcomposer='curl -s https://getcomposer.org/installer | php'
 alias art='php artisan $*'
 
+# }}}
+# {{{ 2 go dev
+alias gr="go run $*"
 # }}}
 
 alias pserve='python -mSimpleHTTPServer'
