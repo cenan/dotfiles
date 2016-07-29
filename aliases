@@ -43,25 +43,30 @@ alias md='mkdir -p'
 alias rd=rmdir
 
 # mkdir & cd to it
-function mcd() { 
-  mkdir -p "$1" && cd "$1"; 
+function mcd() {
+  mkdir -p "$1" && cd "$1";
 }
 
 alias llip='last | grep pts | cut -c 23-36 | sort -u'
 alias root='sudo -i'
-alias df='df --human-readable -T'
+if [[ $OSTYPE != darwin* ]]; then
+  alias df='df --human-readable -T'
+else
+  alias df='df -H'
+fi
 alias chx='chmod +x $*'
 
 if [[ $OSTYPE != darwin* ]]; then
 	alias rawsm="kill -1 `pidof awesome`"
 fi
 
-alias v="vim"
-alias sv="sudo vim"
+alias v="nvim"
+alias sv="sudo nvim"
 alias e="emacs -nw"
 alias se="sudo emacs -nw"
 alias vssh="v ~/.ssh/config"
 alias v.="v ."
+alias vp="vi ~/Dropbox/passwd/passwords"
 
 # from zsh
 alias _='sudo'
@@ -95,7 +100,7 @@ alias apt-bp='sudo apt-get -t squeeze-backports install'
 # {{{2 pacman
 alias pacupg='sudo pacman -Syu'        # Synchronize with repositories before upgrading packages that are out of date on the local system.
 alias pacin='sudo pacman -S'           # Install specific package(s) from the repositories
-alias pacins='sudo pacman -U'          # Install specific package not from the repositories but from a file 
+alias pacins='sudo pacman -U'          # Install specific package not from the repositories but from a file
 alias pacre='sudo pacman -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
 alias pacrem='sudo pacman -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
 alias pacrep='pacman -Si'              # Display information about a given package in the repositories
@@ -110,6 +115,7 @@ alias paclocs='pacman -Qs'             # Search for package(s) in the local data
 # {{{2 git
 
 alias g='git'
+alias gc='git checkout'
 alias gst='git status'
 alias gl='git pull'
 alias gup='git fetch && git rebase'
@@ -138,9 +144,15 @@ function itermtitle() {
 }
 # {{{2 tmux
 
-alias t="tmux -2 -u"
+t() {
+if [ "$#" -ne 1 ]; then
+	tmux -2 -u
+else
+	tmux -2 -u attach -t $*
+fi
+}
+
 alias ta="tmux -2 -u attach"
-alias tat="tmux -2 -u attach -t"
 alias tls="tmux ls"
 
 
@@ -150,6 +162,9 @@ alias tls="tmux ls"
 
 alias hotp="htop"
 alias sl=ls
+alias ks=ls
+alias mian=mina
+alias tks=tls
 
 # }}}
 # {{{1 development
@@ -157,6 +172,9 @@ alias sl=ls
 
 alias be='bundle exec $*'
 alias mdep='mina deploy'
+if test -n "$ZSH_VERSION"; then
+	alias mina='noglob mina'
+fi
 
 # }}}
 # {{{2 python dev
@@ -173,17 +191,23 @@ alias gts='grunt test'
 
 alias getcomposer='curl -s https://getcomposer.org/installer | php'
 alias art='php artisan $*'
+alias rstdb="php artisan migrate:refresh --seed && php artisan db:populate"
 
 # }}}
 # {{{ 2 go dev
 alias gr="go run $*"
+alias gg='cd $GOPATH/src/github.com'
 # }}}
+
+alias gmas='git checkout master'
+alias gdev='git checkout develop'
 
 alias pserve='python -mSimpleHTTPServer'
 # static web server using node module http-server,
 # faster than python command above
 # install with: npm install http-server -g
 alias nserve='http-server -p 8000'
+alias gtags='ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)'
 
 # }}}
 # {{{ linux specific commands
@@ -191,10 +215,23 @@ if [[ $OSTYPE != darwin* ]]; then
 	alias openports='netstat -tnlp | grep -v 127.0.0 | grep -v ::1:'
 fi
 # }}}
+# {{{ project specific shortcuts
+alias r6='cd ~/projects/dbdesigner/r6'
+alias pco='cd ~/projects/dbdesigner/cosql'
+alias ptr='cd ~/projects/dbdesigner/translations'
+alias pf='cd ~/projects/freelance'
+alias pss='cd ~/projects/freelance/startsub/startsub-v2'
+# }}}
 
 # strings –a /proc/<pid_of_the_process>/environ
 
 alias ntldep='git commit -amupdate && gp && mina deploy'
-alias ctags="`brew --prefix`/bin/ctags"
+if [[ $OSTYPE == darwin* ]]; then
+	alias ctags="`brew --prefix`/bin/ctags"
+fi
+
+alias ff="find . -type f | xargs fgrep $1 -s -B1 -A1"
+
+alias mc="MC_SKIN=modarin256 mc"
 
 # vim: set filetype=conf :

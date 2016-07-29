@@ -1,0 +1,10 @@
+{
+	"color_scheme": "Packages/Theme - itg.flat/itg.dark.tmTheme",
+	"font_size": 13,
+	"ignored_packages":
+	[
+	],
+	"itg_scrollbar_medium": true,
+	"itg_small_tabs": true,
+	"theme": "itg.flat.dark.sublime-theme"
+}

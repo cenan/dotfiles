@@ -10,6 +10,7 @@ then
 fi
 
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+# PS1="{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
 #### OPTIONS ####
 
@@ -36,7 +37,7 @@ setopt pushd_ignore_dups
 setopt always_to_end
 
 # Automatically list choices on an ambiguous completion.
-# setopt auto_list
+setopt auto_list
 
 # Automatically use menu completion after the second consecutive request for completion,
 # for example by pressing the tab key repeatedly. This option is overridden by MENU_COMPLETE.
@@ -153,8 +154,8 @@ export GREP_COLOR='1;32'
 
 # HISTORY
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=20000
+SAVEHIST=20000
 
 # MISC
 ## smart urls
@@ -206,3 +207,6 @@ unsetopt AUTO_NAME_DIRS
 
 source $HOME/dotfiles/x_profile
 
+#zstyle ':completion:*:*:git:*' script /usr/local/git/contrib/completion/git-completion.bash
+#fpath=(~/.zsh $fpath)
+#
