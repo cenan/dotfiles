@@ -153,6 +153,8 @@ fi
 }
 
 alias ta="tmux -2 -u attach"
+# start a new tmux session with given name
+alias tn="tmux -2 -u new -s $1"
 alias tls="tmux ls"
 
 
