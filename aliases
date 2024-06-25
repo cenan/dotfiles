@@ -125,6 +125,7 @@ alias ga='git add'
 alias gm='git merge'
 alias gdf='git diff'
 alias gpa='git push all'
+alias gb='git checkout $(git branch | fzf-tmux -d 15)'
 # list remotes
 alias grv='git remote -v'
 function gcp() {
@@ -159,8 +160,6 @@ alias ta="tmux -2 -u attach"
 # start a new tmux session with given name
 alias tn="tmux -2 -u new -s $1"
 alias tls="tmux ls"
-
-
 
 # }}}
 # {{{ typos
@@ -237,6 +236,7 @@ alias ntldep='git commit -amupdate && gp && mina deploy'
 # fi
 
 alias ff="find . -type f | xargs fgrep $1 -s -B1 -A1"
+alias ftf="find . -type f | grep $1 | xargs fgrep $2 -s -B1 -A1"
 
 alias mc="MC_SKIN=modarin256 mc"
 
