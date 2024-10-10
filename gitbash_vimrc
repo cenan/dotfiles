@@ -1,0 +1,30 @@
+set number
+set history=500				 " command line history
+set encoding=utf-8 fileencodings=
+set foldmethod=marker
+set cryptmethod=blowfish
+set hlsearch				 " highlight search items
+set ignorecase				 " case insensitive search
+set incsearch				 " do incremental searching
+set smartcase				 " ignore case when only lowercase
+set shiftwidth=4			 " number of spaces to use for each step of (auto)indent
+set tabstop=4				 " number of spaces a tab counts for
+set smartindent
+
+set nobackup
+set noswapfile
+set mouse=a
+syntax on
+set cursorline
+let mapleader = ","
+nnoremap <silent> <leader>v :edit $MYVIMRC<cr>
+noremap <C-J> :bp<CR>
+nnoremap <S-Tab> :bp<CR>
+noremap <C-K> :bn<CR>
+nnoremap <Tab> :bn<CR>
+set shortmess+=I
+set completeopt=longest,menuone
+set wildmenu
+colorscheme sorbet
+" colorscheme peachpuff
+set novisualbell
