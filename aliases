@@ -75,6 +75,8 @@ alias lsa='ls -lah'
 alias l='ls -la'
 alias ll='ls -l'
 
+alias fmtjson='jq "." -M'
+
 # }}}
 # {{{ search
 #find file
@@ -240,4 +242,4 @@ alias ftf="find . -type f | grep $1 | xargs fgrep $2 -s -B1 -A1"
 
 alias mc="MC_SKIN=modarin256 mc"
 
-# vim: set filetype=conf :
+# vim: set filetype=conf foldmethod=marker :
