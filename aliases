@@ -126,7 +126,7 @@ alias ga='git add'
 alias gm='git merge'
 alias gdf='git diff'
 alias gpa='git push all'
-alias gb='git checkout $(git branch | fzf-tmux -d 15)'
+alias gb='git checkout $(git branch -a | fzf-tmux -d 15)'
 # list remotes
 alias grv='git remote -v'
 function gcp() {
@@ -234,8 +234,8 @@ fif() {
   fi
   rg --line-number --no-heading --color=always "$query" \
     | fzf --ansi --delimiter : \
-          --preview 'bat --style=numbers --color=always --line-range :500 {1} --highlight-line {2}' \
-          --preview-window=right:60% \
+          --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+          --preview-window=+{2}-/2 \
           --bind "enter:execute(nvim {1} +{2})"
 }
 
