@@ -225,6 +225,20 @@ alias ntldep='git commit -amupdate && gp && mina deploy'
 alias ff="find . -type f | xargs fgrep $1 -s -B1 -A1"
 alias ftf="find . -type f | grep $1 | xargs fgrep $2 -s -B1 -A1"
 
+fif() {
+  local query
+  query="${1:-}"
+  if [ -z "$query" ]; then
+    echo "Usage: fif <search-term>"
+    return 1
+  fi
+  rg --line-number --no-heading --color=always "$query" \
+    | fzf --ansi --delimiter : \
+          --preview 'bat --style=numbers --color=always --line-range :500 {1} --highlight-line {2}' \
+          --preview-window=right:60% \
+          --bind "enter:execute(nvim {1} +{2})"
+}
+
 alias mc="MC_SKIN=modarin256 mc"
 
 # {{{ network
