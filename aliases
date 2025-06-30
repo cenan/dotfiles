@@ -154,7 +154,17 @@ fi
 alias ta="tmux -2 -u attach"    # attach to a tmux session
 alias tn="tmux -2 -u new -s $1" # start a new tmux session with given name
 alias tls="tmux ls"             # list all tmux sessions
+tatl() {
+  local session
+  session=$(tmux list-sessions -F '#S' | fzf)
+  [ -z "$session" ] && return
 
+  if [ -n "$TMUX" ]; then
+    tmux switch-client -t "$session"
+  else
+    tmux attach-session -t "$session"
+  fi
+}
 # }}}
 # {{{ typos
 
