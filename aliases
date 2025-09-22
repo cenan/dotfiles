@@ -183,6 +183,7 @@ alias mdep='mina deploy'
 if test -n "$ZSH_VERSION"; then
 	alias mina='noglob mina'
 fi
+alias capc='cap production rails:console'
 
 # }}}
 # {{{2 python dev
