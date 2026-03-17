@@ -1,0 +1,320 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/aiprmpt/config.json"
+
+err() {
+  printf 'aiprmpt: %s\n' "$*" >&2
+  exit 1
+}
+
+need() {
+  command -v "$1" >/dev/null 2>&1 || err "missing dependency: $1"
+}
+
+need tmux
+need jq
+need curl
+need mktemp
+
+read_cfg() {
+  local key="$1"
+  jq -r "$key // empty" "$CONFIG_FILE"
+}
+
+require_config() {
+  [[ -f "$CONFIG_FILE" ]] || err "config not found: $CONFIG_FILE"
+}
+
+cmd_ask() {
+  require_config
+
+  # Use tmux's prompt UI. The entered text is passed to this script via %%
+  tmux command-prompt -p "Ask AI" \
+    "run-shell 'q=\$(mktemp /tmp/aiprmpt.XXXXXX); printf %s \"%%\" > \"\$q\"; tmux split-window -v \"$0 answer \"\"\$q\"\"\"'"
+}
+
+stream_openrouter() {
+  local question_file="$1"
+
+  require_config
+
+  local base_url model api_key system_prompt title app_url temperature max_tokens
+  base_url="$(read_cfg '.base_url')"
+  model="$(read_cfg '.model')"
+  api_key="$(read_cfg '.api_key')"
+  system_prompt="$(read_cfg '.system_prompt')"
+  title="$(read_cfg '.http_referer_title')"
+  app_url="$(read_cfg '.http_referer')"
+  temperature="$(read_cfg '.temperature')"
+  max_tokens="$(read_cfg '.max_tokens')"
+
+  [[ -n "$base_url" ]] || err "base_url missing in config"
+  [[ -n "$model" ]] || err "model missing in config"
+  [[ -n "$api_key" ]] || err "api_key missing in config"
+  [[ -f "$question_file" ]] || err "question file not found: $question_file"
+
+  local question
+  question="$(cat "$question_file")"
+  rm -f "$question_file"
+
+  [[ -n "$question" ]] || err "empty question"
+
+  printf 'Model: %s\n' "$model"
+  printf 'Question:\n%s\n' "$question"
+  printf '\n---\n\n'
+
+  local payload
+  payload="$(jq -n \
+    --arg model "$model" \
+    --arg system "$system_prompt" \
+    --arg user "$question" \
+    --argjson temperature "${temperature:-0.7}" \
+    --argjson max_tokens "${max_tokens:-2048}" '
+    {
+      model: $model,
+      stream: true,
+      temperature: $temperature,
+      max_tokens: $max_tokens,
+      messages: (
+        if ($system | length) > 0 then
+          [
+            {role: "system", content: $system},
+            {role: "user", content: $user}
+          ]
+        else
+          [
+            {role: "user", content: $user}
+          ]
+        end
+      )
+    }'
+  )"
+
+  local curl_args=(
+    -sS -N
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer $api_key"
+  )
+
+  if [[ -n "${title:-}" ]]; then
+    curl_args+=(-H "X-Title: $title")
+  fi
+  if [[ -n "${app_url:-}" ]]; then
+    curl_args+=(-H "HTTP-Referer: $app_url")
+  fi
+
+  local endpoint="${base_url%/}/chat/completions"
+  local had_output=0
+  local line json stream_error chunk
+
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+
+    case "$line" in
+      data:\ \[DONE\])
+        break
+        ;;
+      data:\ *)
+        json="${line#data: }"
+
+        stream_error="$(printf '%s' "$json" | jq -r 'try .error.message // empty')"
+        if [[ -n "$stream_error" ]]; then
+          printf '\n[stream error] %s\n' "$stream_error" >&2
+          return 1
+        fi
+
+        chunk="$(printf '%s' "$json" | jq -r 'try .choices[0].delta.content // empty')"
+        if [[ -n "$chunk" ]]; then
+          had_output=1
+          printf '%s' "$chunk"
+        fi
+        ;;
+    esac
+  done < <(
+    curl "${curl_args[@]}" \
+      -X POST "$endpoint" \
+      -d "$payload"
+  )
+
+  printf '\n\n'
+  if [[ "$had_output" -eq 0 ]]; then
+    printf '[no text returned]\n'
+  fi
+
+  printf '\nPress Enter to close this pane...'
+  read -r _
+  tmux kill-pane
+}
+
+_stream_openrouter() {
+  local question_file="$1"
+
+  require_config
+
+  local base_url model api_key system_prompt title app_url temperature max_tokens
+  base_url="$(read_cfg '.base_url')"
+  model="$(read_cfg '.model')"
+  api_key="$(read_cfg '.api_key')"
+  system_prompt="$(read_cfg '.system_prompt')"
+  title="$(read_cfg '.http_referer_title')"
+  app_url="$(read_cfg '.http_referer')"
+  temperature="$(read_cfg '.temperature')"
+  max_tokens="$(read_cfg '.max_tokens')"
+
+  [[ -n "$base_url" ]] || err "base_url missing in config"
+  [[ -n "$model" ]] || err "model missing in config"
+  [[ -n "$api_key" ]] || err "api_key missing in config"
+  [[ -f "$question_file" ]] || err "question file not found: $question_file"
+
+  local question
+  question="$(cat "$question_file")"
+  rm -f "$question_file"
+
+  [[ -n "$question" ]] || err "empty question"
+
+  printf 'Model: %s\n' "$model"
+  printf 'Question:\n%s\n' "$question"
+  printf '\n---\n\n'
+
+  local payload
+  payload="$(jq -n \
+    --arg model "$model" \
+    --arg system "$system_prompt" \
+    --arg user "$question" \
+    --argjson temperature "${temperature:-0.7}" \
+    --argjson max_tokens "${max_tokens:-2048}" '
+    {
+      model: $model,
+      stream: true,
+      temperature: $temperature,
+      max_tokens: $max_tokens,
+      messages: (
+        if ($system | length) > 0 then
+          [
+            {role: "system", content: $system},
+            {role: "user", content: $user}
+          ]
+        else
+          [
+            {role: "user", content: $user}
+          ]
+        end
+      )
+    }'
+  )"
+
+  local curl_args=(
+    -sS -N
+    -H "Content-Type: application/json"
+    -H "Authorization: Bearer $api_key"
+  )
+
+  # Optional OpenRouter headers
+  if [[ -n "${title:-}" ]]; then
+    curl_args+=(-H "X-Title: $title")
+  fi
+  if [[ -n "${app_url:-}" ]]; then
+    curl_args+=(-H "HTTP-Referer: $app_url")
+  fi
+
+  local endpoint="${base_url%/}/chat/completions"
+
+  local had_output=0
+
+  curl "${curl_args[@]}" \
+    -X POST "$endpoint" \
+    -d "$payload" |
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+
+    case "$line" in
+      data:\ \[DONE\])
+        break
+        ;;
+      data:\ *)
+        local json
+        json="${line#data: }"
+
+        # If OpenRouter sends a streamed error event, show it.
+        local stream_error
+        stream_error="$(printf '%s' "$json" | jq -r 'try .error.message // empty')"
+        if [[ -n "$stream_error" ]]; then
+          printf '\n[stream error] %s\n' "$stream_error" >&2
+          return 1
+        fi
+
+        local chunk
+        chunk="$(printf '%s' "$json" | jq -r 'try .choices[0].delta.content // empty')"
+
+        if [[ -n "$chunk" ]]; then
+          had_output=1
+          printf '%s' "$chunk"
+        fi
+        ;;
+    esac
+  done
+
+  printf '\n\n'
+  if [[ "$had_output" -eq 0 ]]; then
+    printf '[no text returned]\n'
+  fi
+
+  printf '\nPress Enter to close this pane...'
+  read -r _
+  tmux kill-pane
+}
+
+cmd_answer() {
+  local question_file="${1:-}"
+  [[ -n "$question_file" ]] || err "usage: aiprmpt answer /path/to/question-file"
+  stream_openrouter "$question_file"
+}
+
+cmd_init() {
+  local dir
+  dir="$(dirname "$CONFIG_FILE")"
+  mkdir -p "$dir"
+
+  if [[ -e "$CONFIG_FILE" ]]; then
+    err "config already exists: $CONFIG_FILE"
+  fi
+
+  cat >"$CONFIG_FILE" <<'JSON'
+{
+  "base_url": "https://openrouter.ai/api/v1",
+  "api_key": "YOUR_OPENROUTER_API_KEY",
+  "model": "qwen/qwen3-next-80b-a3b-instruct:free",
+  "system_prompt": "You are a concise terminal assistant.",
+  "temperature": 0.7,
+  "max_tokens": 2048,
+  "http_referer": "",
+  "http_referer_title": "aiprmpt"
+}
+JSON
+
+  printf 'Created %s\n' "$CONFIG_FILE"
+}
+
+main() {
+  local cmd="${1:-}"
+  shift || true
+
+  case "$cmd" in
+    ask) cmd_ask "$@" ;;
+    answer) cmd_answer "$@" ;;
+    init) cmd_init ;;
+    *)
+      cat <<EOF
+Usage:
+  aiprmpt init
+  aiprmpt ask
+  aiprmpt answer /tmp/question-file
+EOF
+      exit 1
+      ;;
+  esac
+}
+
+main "$@"
+
