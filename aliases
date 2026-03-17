@@ -77,6 +77,9 @@ alias ll='ls -l'
 alias fmtjson='jq "." -M'
 
 alias sshs='selected_host=$(cat ~/.ssh/config | grep "Host " | cut -d " " -f 2 | sort | fzf-tmux -d 20) && [ -n "$selected_host" ] && ssh "$selected_host"'
+sshhost() {
+    grep -A 1 "^Host $1" ~/.ssh/config | grep HostName | awk '{print $2}'
+}
 
 # }}}
 # {{{ search
