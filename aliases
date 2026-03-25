@@ -257,6 +257,8 @@ fif() {
 
 alias mc="MC_SKIN=modarin256 mc"
 
+alias calc='bc -l'
+
 # {{{ network
 
 alias myip='curl http://ipecho.net/plain; echo'
