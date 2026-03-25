@@ -33,4 +33,6 @@ keymap.set('n', '<leader>w', function()
         vim.cmd('bdelete')
     end
 end, { noremap = true, silent = true, desc = "Close buffer" })
+keymap.set('n', '<F2>', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'Rename symbol' })
+keymap.set('n', '<F12>', vim.lsp.buf.definition, { noremap = true, silent = true, desc = 'Go to definition' })
 keymap.set('n', '<leader>lf', vim.lsp.buf.format, { noremap = true, silent = true, desc = 'Format buffer' })
