@@ -37,7 +37,32 @@ require('mini.tabline').setup()
 require('mini.icons').setup({
   style = 'glyph'
 })
-require('mini.starter').setup()
+
+local starter = require('mini.starter')
+starter.setup({
+  evaluate_single = true,
+  items = {
+    starter.sections.recent_files(5, false),
+    starter.sections.recent_files(5, true),
+    {
+      name = 'Settings',
+      action = 'edit' .. vim.fn.expand('~/.config/nvim/init.lua'),
+      section = 'Config',
+    },
+    {
+      name = 'Keymaps',
+      action = 'edit' .. vim.fn.expand('~/.config/nvim/lua/config/keymaps.lua'),
+      section = 'Config',
+    },
+    starter.sections.builtin_actions(),
+  },
+  content_hooks = {
+    starter.gen_hook.adding_bullet(),
+    starter.gen_hook.indexing('all', { 'Builting actions' }),
+    starter.gen_hook.padding(3, 2),
+  },
+})
+
 require('mini.files').setup()
 require('mini.git').setup()
 require('mini.pick').setup()
