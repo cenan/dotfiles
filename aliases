@@ -50,7 +50,11 @@ function mcd() {
 alias llip='last | grep pts | cut -c 23-36 | sort -u' # last login ip
 alias root='sudo -i'
 if [[ $OSTYPE != darwin* ]]; then
-  alias df='df --human-readable -T'
+  if [ "$PREFIX" = "/data/data/com.termux/files/usr" ]; then
+    alias df='df -h'
+  else
+    alias df='df --human-readable -T'
+  fi
 else
   alias df='df -H'
 fi
