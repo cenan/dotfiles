@@ -75,6 +75,12 @@ vim.lsp.enable('jsonls')
 
 require('mini.completion').setup()
 require('mini.comment').setup()
+require('mini.diff').setup({
+  view = {
+    --style = 'sign',
+    --signs = { add = '+', change = '▒', delete = '-' },
+  }
+})
 
 --require('nvim-treesitter').install { 'yaml' }
 
