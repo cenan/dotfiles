@@ -72,6 +72,7 @@ require('mini.notify').setup()
 vim.lsp.enable('gopls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jsonls')
+vim.lsp.enable('pyright')
 
 require('mini.completion').setup()
 require('mini.comment').setup()
