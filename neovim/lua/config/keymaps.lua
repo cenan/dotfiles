@@ -1,4 +1,9 @@
-vim.g.mapleader = ","
+-- Set leader key: space on Termux (Android), comma elsewhere
+if vim.fn.has("android") == 1 then
+    vim.g.mapleader = " "
+else
+    vim.g.mapleader = ","
+end
 
 local keymap = vim.keymap
 
