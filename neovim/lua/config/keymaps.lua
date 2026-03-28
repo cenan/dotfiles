@@ -24,10 +24,13 @@ keymap.set("n", "<leader>pq", function() MiniExtra.pickers.list({ scope = "quick
 keymap.set("n", "<leader>pg", function() MiniPick.builtin.grep() end, { desc = "Grep" })
 keymap.set("n", "<leader>pm", function() MiniExtra.pickers.marks() end, { desc = "Markers" })
 
+keymap.set("n", "<leader>ff", "<Cmd>Neotree action=focus position=left<CR>")
+
 keymap.set("n", "<leader>rr", function()
     vim.cmd("source $MYVIMRC")
     vim.cmd("source " .. vim.fn.stdpath("config") .. "/lua/config/options.lua")
     vim.cmd("source " .. vim.fn.stdpath("config") .. "/lua/config/keymaps.lua")
+    vim.notify("Neovim config reloaded", vim.log.levels.INFO, { title = "Config" })
 end, { desc = "Reload Neovim config" })
 keymap.set("n", "<leader>c", ":CodeCompanionChat Toggle<CR>", { desc = "Toggle CodeCompanionChat" })
 keymap.set("n", "<leader>gg", ":Neogit<cr>", { desc = "Open Neogit" })
@@ -38,4 +41,3 @@ end, { noremap = true, silent = true, desc = "Close buffer" })
 keymap.set('n', '<F2>', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'Rename symbol' })
 keymap.set('n', '<F12>', vim.lsp.buf.definition, { noremap = true, silent = true, desc = 'Go to definition' })
 keymap.set('n', '<leader>lf', vim.lsp.buf.format, { noremap = true, silent = true, desc = 'Format buffer' })
-
