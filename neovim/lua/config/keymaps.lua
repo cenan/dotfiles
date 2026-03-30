@@ -25,6 +25,8 @@ keymap.set("n", "<leader>pg", function() MiniPick.builtin.grep() end, { desc = "
 keymap.set("n", "<leader>pm", function() MiniExtra.pickers.marks() end, { desc = "Markers" })
 
 keymap.set("n", "<leader>ff", "<Cmd>Neotree action=focus position=left<CR>")
+keymap.set({ "n", "x" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+keymap.set({ "n", "x" }, "<leader>pp", '"+p', { desc = "Paste from system clipboard" })
 
 keymap.set("n", "<leader>rr", function()
     vim.cmd("source $MYVIMRC")
