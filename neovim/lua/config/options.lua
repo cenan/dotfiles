@@ -1,11 +1,30 @@
 vim.g.copilot_enabled = false
-
-vim.cmd.colorscheme('habamax')
---vim.cmd.colorscheme('miniautumn')
-
-vim.cmd("let g:netrw_liststyle = 3")
+vim.g.have_nerd_font = true
 
 local opt = vim.opt
+local default_background = "dark"
+local default_colorscheme = "habamax"
+
+opt.background = default_background
+
+local colorscheme_ok = pcall(vim.cmd.colorscheme, default_colorscheme)
+if not colorscheme_ok then
+  vim.notify("Default colorscheme not found: " .. default_colorscheme, vim.log.levels.WARN)
+end
+
+-- Optional local overrides in ~/.config/nvim/lua/local.lua
+local local_lua_path = vim.fn.stdpath("config") .. "/lua/local.lua"
+if vim.fn.filereadable(local_lua_path) == 1 then
+  package.loaded["local"] = nil
+  local local_ok, local_err = pcall(require, "local")
+  if not local_ok then
+    vim.notify("Failed to load local.lua: " .. local_err, vim.log.levels.WARN)
+  end
+end
+--vim.cmd.colorscheme('miniautumn')
+--vim.cmd.colorscheme('minischeme')
+
+vim.cmd("let g:netrw_liststyle = 3")
 
 opt.relativenumber = false
 opt.number = true
@@ -26,7 +45,6 @@ opt.cursorline = true
 opt.showmode = false -- do not show the mode, instead it is in status line
 
 opt.termguicolors = true
-opt.background = "dark" -- colorschemes that can be light or dark will be dark
 opt.signcolumn = "yes" -- show sign column so that the text won't shift
 
 opt.backspace = "indent,eol,start"
