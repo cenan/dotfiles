@@ -69,27 +69,10 @@ require('mini.pick').setup()
 require('mini.extra').setup()
 require('mini.notify').setup()
 
-vim.lsp.config('lua_ls', {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
-  settings = {
-    Lua = {
-      runtime = { version = 'LuaJIT' },
-      diagnostics = { globals = { 'vim', 'require' } },
-      workspace = {
-        checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      telemetry = { enable = false },
-    },
-  },
-})
-
 vim.lsp.enable('gopls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jsonls')
 vim.lsp.enable('pyright')
-vim.lsp.enable('lua_ls')
 
 require('mini.completion').setup()
 require('mini.comment').setup()
