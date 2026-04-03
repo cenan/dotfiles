@@ -66,3 +66,6 @@ opt.clipboard:append("unnamedplus") -- use the system clipboard as the default r
 --   }
 -- end
 
+opt.list = true
+opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
