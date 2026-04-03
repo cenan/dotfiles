@@ -24,14 +24,17 @@ vim.lsp.enable('ts_ls')
 vim.lsp.enable('jsonls')
 vim.lsp.enable('pyright')
 
-vim.pack.add({
-  {
-    src = "https://www.github.com/olimorris/codecompanion.nvim",
-    version = vim.version.range("^19.0.0")
-  },
-  "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/nvim-treesitter/nvim-treesitter"
-})
+if vim.fn.has("android") == 1 then
+else
+    vim.pack.add({
+      {
+        src = "https://www.github.com/olimorris/codecompanion.nvim",
+        version = vim.version.range("^19.0.0")
+      },
+      "https://github.com/nvim-lua/plenary.nvim",
+      "https://github.com/nvim-treesitter/nvim-treesitter"
+    })
+end
 
 require("codecompanion").setup({
   interactions = {
