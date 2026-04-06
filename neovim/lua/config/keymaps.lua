@@ -61,3 +61,20 @@ keymap.set('n', '<leader>lf', vim.lsp.buf.format, { noremap = true, silent = tru
 keymap.set('n', '<C-j>', ':m .+1<CR>>==')
 keymap.set('n', '<C-k>', ':m .-2<CR>>==')
 
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>tt', function()
+  vim.cmd('tcd %:p:h')
+  vim.cmd('terminal')
+end, { desc = 'Terminal in buffer dir' })
+
+vim.keymap.set('n', '<leader>tv', function()
+  vim.cmd('tcd %:p:h')
+  vim.cmd('vsplit | terminal')
+end, { desc = 'Term buf dir, vert split' })
+
+vim.keymap.set('n', '<leader>th', function()
+  vim.cmd('tcd %:p:h')
+  vim.cmd('split | terminal')
+end, { desc = 'Term buf dir, hor split' })
+
