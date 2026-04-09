@@ -6,6 +6,7 @@ if vim.fn.has("android") == 1 then
 else
     vim.g.mapleader = ","
 end
+vim.g.maplocalleader = ","
 
 local keymap = vim.keymap
 
@@ -77,4 +78,12 @@ vim.keymap.set('n', '<leader>th', function()
   vim.cmd('tcd %:p:h')
   vim.cmd('split | terminal')
 end, { desc = 'Term buf dir, hor split' })
+
+-- Agentic
+
+vim.keymap.set('n', '<leader>a', function()
+  require("agentic").toggle()
+end, { desc = 'Toggle Agentic panel' })
+
+--
 

@@ -23,43 +23,19 @@ vim.lsp.enable('gopls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jsonls')
 vim.lsp.enable('pyright')
+vim.lsp.enable('solargraph')
 
-if vim.fn.has("android") == 1 then
-else
-    vim.pack.add({
-      {
-        src = "https://www.github.com/olimorris/codecompanion.nvim",
-        version = vim.version.range("^19.0.0")
-      },
-      "https://github.com/nvim-lua/plenary.nvim",
-      "https://github.com/nvim-treesitter/nvim-treesitter"
-    })
+if vim.fn.has("android") ~= 1 then
+  -- skip agentic.nvim on termux
+  vim.pack.add({
+    {
+      src = "https://github.com/carlos-algms/agentic.nvim"
+    }
+  })
+  require("agentic").setup({
+    provider = "opencode-acp",
+  })
 end
-
-require("codecompanion").setup({
-  interactions = {
-    chat = {
-      keymaps = {
-        close = false,
-        clear = false,
-      },
-      adapter = {
-        name = "mistral_vibe" -- "codex"
-      },
-    },
-    cli = {
-      agent = "codex",
-      agents = {
-        codex = {
-          cmd = "codex",
-          args = {},
-          description = "Codex",
-          provider = "terminal",
-        },
-      },
-    },
-  },
-})
 
 vim.pack.add({
   {
