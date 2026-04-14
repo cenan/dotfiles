@@ -85,5 +85,20 @@ vim.keymap.set('n', '<leader>a', function()
   require("agentic").toggle()
 end, { desc = 'Toggle Agentic panel' })
 
+keymap.set("n", "<leader>tw", function()
+    vim.opt.wrap = not vim.opt.wrap:get()
+    vim.notify("wrap " .. (vim.opt.wrap:get() and "on" or "off"))
+end, { desc = "Toggle wrap" })
+
+keymap.set("n", "<leader>tn", function()
+    vim.opt.number = not vim.opt.number:get()
+    vim.notify("line numbers " .. (vim.opt.number:get() and "on" or "off"))
+end, { desc = "Toggle line numbers" })
+
+keymap.set("n", "<leader>tc", function()
+    vim.opt.cursorline = not vim.opt.cursorline:get()
+    vim.notify("cursorline " .. (vim.opt.cursorline:get() and "on" or "off"))
+end, { desc = "Toggle cursorline" })
+
 --
 
