@@ -2,6 +2,18 @@
 
 # Script to group files into subdirectories based on the first 2 characters of their filename
 # Efficiently handles directories with millions of files
+#
+# Usage:
+#   ./group_files_by_prefix.sh /path/to/directory
+#
+# Environment variables:
+#   PREFIX_MODE=first|digits|after_underscore  (default: first)
+#   DRY_RUN=true|false                         (default: false)
+#
+# PREFIX_MODE options:
+#   first           - First 2 characters of filename (default)
+#   digits          - First 2 digits found in filename
+#   after_underscore- First 2 chars after last underscore
 
 set -euo pipefail
 
@@ -9,6 +21,7 @@ set -euo pipefail
 SOURCE_DIR="${1:-.}"
 REPORT_FILE="files-report.txt"
 DRY_RUN="${DRY_RUN:-false}"
+PREFIX_MODE="${PREFIX_MODE:-first}"
 
 # Check if source directory exists
 if [[ ! -d "$SOURCE_DIR" ]]; then
@@ -20,6 +33,7 @@ fi
 SOURCE_DIR="$(cd "$SOURCE_DIR" && pwd)"
 
 echo "Processing files in: $SOURCE_DIR"
+echo "Prefix mode: $PREFIX_MODE"
 echo "Report will be saved to: $SOURCE_DIR/$REPORT_FILE"
 
 if [[ "$DRY_RUN" == "true" ]]; then
@@ -32,12 +46,36 @@ declare -A dir_counts
 # Counter for progress
 processed=0
 
-# Function to get prefix (first 2 characters, lowercase for consistency)
+# Function to get prefix based on PREFIX_MODE
 get_prefix() {
     local filename="$1"
-    # Extract first 2 characters, convert to lowercase for grouping
-    local prefix="${filename:0:2}"
-    echo "$prefix" | tr '[:upper:]' '[:lower:]'
+    local prefix=""
+    
+    case "$PREFIX_MODE" in
+        digits)
+            # Extract first 2 digits from filename
+            # For doc_000123.json → extracts 00
+            local digits="${filename//[^0-9]/}"
+            prefix="${digits:0:2}"
+            ;;
+        after_underscore)
+            # First 2 chars after last underscore
+            # For doc_abc123.json → extracts ab
+            if [[ "$filename" =~ _([^_]{2}) ]]; then
+                prefix="${BASH_REMATCH[1]}"
+            else
+                prefix="${filename:0:2}"
+            fi
+            prefix=$(echo "$prefix" | tr '[:upper:]' '[:lower:]')
+            ;;
+        first|*)
+            # Default: First 2 characters of filename
+            prefix="${filename:0:2}"
+            prefix=$(echo "$prefix" | tr '[:upper:]' '[:lower:]')
+            ;;
+    esac
+    
+    echo "$prefix"
 }
 
 # Function to move a file to its destination
@@ -46,12 +84,19 @@ process_file() {
     local filename
     filename="$(basename "$file")"
     
-    # Get the prefix (first 2 chars)
+    # Get the prefix
     local prefix
     prefix=$(get_prefix "$filename")
     
-    # Validate prefix (only allow alphanumeric, otherwise use 'other')
-    if [[ ! "$prefix" =~ ^[a-zA-Z0-9]{2}$ ]]; then
+    # Validate prefix (only allow alphanumeric or numeric for digits mode)
+    if [[ "$PREFIX_MODE" == "digits" ]]; then
+        # For digits mode, pad with zeros if less than 2 digits
+        if [[ -z "$prefix" ]]; then
+            prefix="00"
+        elif [[ ${#prefix} -eq 1 ]]; then
+            prefix="0${prefix}"
+        fi
+    elif [[ ! "$prefix" =~ ^[a-zA-Z0-9]{2}$ ]]; then
         prefix="other"
     fi
     
@@ -91,14 +136,14 @@ process_file() {
     
     # Progress indicator
     processed=$((processed + 1))
-    if (( processed % 10000 == 0 )); then
+    if (( processed % 1000 == 0 )); then
         echo "  Processed: $processed files..."
     fi
 }
 
 # Export functions and variables for use with find
 export -f get_prefix process_file
-export SOURCE_DIR DRY_RUN
+export SOURCE_DIR DRY_RUN PREFIX_MODE
 
 # Process files using find with -exec for efficiency
 echo "Starting file processing..."
