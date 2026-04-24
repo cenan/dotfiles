@@ -85,6 +85,10 @@ sshhost() {
 }
 alias sshs='selected_host=$(cat ~/.ssh/config ~/.ssh/coensio/config 2>/dev/null | grep "Host " | cut -d " " -f 2 | sort | fzf-tmux -d 20) && [ -n "$selected_host" ] && ssh "$selected_host"'
 
+countfiles() {
+  find "${1:-.}" -maxdepth 1 -type f | wc -l
+}
+
 # }}}
 # {{{ search
 #find file
