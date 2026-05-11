@@ -22,7 +22,11 @@ keymap.set("n", "<leader>pd", function() MiniExtra.pickers.diagnostic() end, { d
 keymap.set("n", "<leader>ph", function() MiniExtra.pickers.history() end, { desc = "Open Command History" })
 keymap.set("n", "<leader>pl", function() MiniExtra.pickers.lsp({ scope = 'references' }) end, { desc = "Open LSP" })
 keymap.set("n", "<leader>pq", function() MiniExtra.pickers.list({ scope = "quickfix" }) end, { desc = "Quickfix" })
-keymap.set("n", "<leader>pg", function() MiniPick.builtin.grep() end, { desc = "Grep" })
+keymap.set("n", "<leader>pg", function()
+  vim.notify("Alt+x: sel Alt+a: sel all Alt+Enter: send sel to qf")
+  MiniPick.builtin.grep()
+end, { desc = "Grep" })
+keymap.set("n", "<leader>pG", function() MiniPick.builtin.grep_live() end, { desc = "Grep (Live)" })
 keymap.set("n", "<leader>pm", function() MiniExtra.pickers.marks() end, { desc = "Markers" })
 keymap.set("n", "<leader>ol", function()
     vim.cmd("edit " .. vim.fn.stdpath("config") .. "/lua/local.lua")
@@ -35,6 +39,10 @@ end, { desc = "Open init.lua" })
 keymap.set("n", "<leader>ok", function()
     vim.cmd("edit " .. vim.fn.stdpath("config") .. "/lua/config/keymaps.lua")
 end, { desc = "Open keymaps.lua" })
+
+keymap.set("n", "<leader>os", function()
+    vim.cmd("edit " .. "/home/cenan/Documents/ssh_servers.md")
+end, { desc = "Open SSH Server list" })
 
 keymap.set("n", "<leader>ff", "<Cmd>Neotree action=focus position=left<CR>")
 keymap.set("n", "<leader>fc", "<Cmd>Neotree close<CR>", { desc = "Close Neotree" })
@@ -79,11 +87,6 @@ vim.keymap.set('n', '<leader>th', function()
   vim.cmd('split | terminal')
 end, { desc = 'Term buf dir, hor split' })
 
--- Agentic
-
-vim.keymap.set('n', '<leader>a', function()
-  require("agentic").toggle()
-end, { desc = 'Toggle Agentic panel' })
 
 keymap.set("n", "<leader>tw", function()
     vim.opt.wrap = not vim.opt.wrap:get()
@@ -100,5 +103,13 @@ keymap.set("n", "<leader>tc", function()
     vim.notify("cursorline " .. (vim.opt.cursorline:get() and "on" or "off"))
 end, { desc = "Toggle cursorline" })
 
+-- Agentic
+
+vim.keymap.set({'n', 'v'}, '<leader>at', function()
+  require("agentic").toggle()
+end, { desc = 'Toggle Agentic panel' })
+
 --
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
