@@ -199,7 +199,8 @@ alias capc='cap production rails:console'
 # }}}
 # {{{2 python dev
 
-alias sve=". env/bin/activate"
+alias sva=". .venv/bin/activate"
+alias pvv="python3 -m venv .venv"
 
 # }}}
 # {{{2 node dev
@@ -236,6 +237,7 @@ fi
 # }}}
 # {{{ project specific shortcuts
 alias pf='cd ~/projects/freelance'
+alias eprj='cd /media/cenan/ext4tb/projects'
 # }}}
 
 # strings –a /proc/<pid_of_the_process>/environ
