@@ -237,7 +237,7 @@ fi
 # }}}
 # {{{ project specific shortcuts
 alias pf='cd ~/projects/freelance'
-alias eprj='cd /media/cenan/ext4tb/projects'
+alias eprj='cd /run/media/cenan/ext4tb/projects'
 # }}}
 
 # strings –a /proc/<pid_of_the_process>/environ
